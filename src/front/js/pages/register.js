@@ -7,6 +7,7 @@ export const Register = () => {
 	const { store, actions } = useContext(Context);
 	const [check, setCheck] = useState("checked");
 	const [data, setData] = useState({
+		user_name: "",
 		email: "",
 		password: ""
 	});
@@ -26,7 +27,7 @@ export const Register = () => {
 	const handleSubmit = e => {
 		e.preventDefault();
 
-		// actions.login(data.email, data.password, check);
+		actions.createUser(data.user_name, data.email, data.password, check);
 
 		setData({ user_name: "", email: "", password: "" });
 	};

@@ -51,6 +51,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 				return true;
 			},
+			createUser: async (user_name, email, password, remember) => {
+				const actions = getActions();
+
+				const options = {
+					method: "POST",
+					headers: {
+						"Content-type": "application/json"
+					},
+					body: JSON.stringify({
+						user_name: user_name,
+						email: email,
+						password: password
+					})
+				};
+
+				const resp = await fetch(process.env.BACKEND_URL + "/user", options);
+				const data = await resp.json();
+
+				if (resp.status === 401) {
+					setStore({ message: data.msg });
+					return false;
+				}
+
+				actions.login(email, password, remember);
+				return true;
+			},
 			getProfileData: async () => {
 				const store = getStore();
 
