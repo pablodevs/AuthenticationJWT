@@ -90,7 +90,6 @@ export const Register = () => {
 								Remember me
 							</label>
 						</div>
-						<span className="login-error">{store.message}</span>
 					</div>
 					<button className="login-button">Register</button>
 				</form>
