@@ -34,7 +34,7 @@ export const Register = () => {
 
 	return (
 		<div className="view">
-			<div className="dflex-column login-scale">
+			<div className="dflex-column scale">
 				<form className="login-form" onSubmit={handleSubmit}>
 					<div className="login-group">
 						<label forhtml="user_nameInputRegister" className="login-label">

@@ -17,7 +17,7 @@ export const Profile = () => {
 
 	return (
 		<div className="view">
-			<h2>Welcome: {store.userData.user_name}</h2>
+			<div className="profile-container scale">Welcome {store.userData.user_name}</div>
 		</div>
 	);
 };

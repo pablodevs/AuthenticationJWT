@@ -53,7 +53,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			createUser: async (user_name, email, password, remember) => {
 				const actions = getActions();
-
 				const options = {
 					method: "POST",
 					headers: {
@@ -65,17 +64,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 						password: password
 					})
 				};
-
 				const resp = await fetch(process.env.BACKEND_URL + "/user", options);
 				const data = await resp.json();
-
-				if (resp.status === 401) {
-					setStore({ message: data.msg });
-					return false;
-				}
-
+				if (resp.status === 401) return false;
 				actions.login(email, password, remember);
-				return true;
+				return data;
 			},
 			getProfileData: async () => {
 				const store = getStore();

@@ -18,6 +18,9 @@ body, #app {
     align-items: center;
     justify-content: center;
 }
+.scale {
+    transform: scale(1.4);
+}
 footer {
     background: rgba(0, 183, 255, 0.205);
     padding-block: 1.5rem;

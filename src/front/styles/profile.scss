@@ -1,0 +1,8 @@
+$border-radius: 0.25rem;
+
+.profile-container {
+    width: 370px;
+    padding: 15px;
+    border-radius: $border-radius;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+}
