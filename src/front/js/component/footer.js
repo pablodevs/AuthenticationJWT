@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 
 export const Footer = () => (
-	<footer className="footer mt-auto py-3 text-center">
+	<footer>
 		<p>
-			Made with <i className="fa fa-heart text-danger" /> by{" "}
-			<a href="http://www.4geeksacademy.com">4Geeks Academy</a>
+			Made with <i className="fa fa-heart" style={{ color: "red" }} /> by{" "}
+			<a href="https://github.com/peibol888" target="_blank" rel="noopener noreferrer">
+				Pablo álamo
+			</a>
 		</p>
 	</footer>
 );

@@ -1,46 +1,72 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			loggedIn: false,
+			token: "",
 			message: null,
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			userData: {}
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
+			forceLogin: () => {
+				setStore({
+					loggedIn: true,
+					token: sessionStorage.getItem("token")
+				});
 			},
+			logout: () => {
+				sessionStorage.removeItem("token");
+				setStore({
+					loggedIn: false,
+					token: "",
+					userData: {}
+				});
+			},
+			login: async (email, password, remember) => {
+				const options = {
+					method: "POST",
+					headers: {
+						"Content-type": "application/json"
+					},
+					body: JSON.stringify({
+						email: email,
+						password: password
+					})
+				};
 
-			getMessage: () => {
-				// fetching data from the backend
-				fetch(process.env.BACKEND_URL + "/api/hello")
-					.then(resp => resp.json())
-					.then(data => setStore({ message: data.message }))
-					.catch(error => console.log("Error loading message from backend", error));
+				const resp = await fetch(process.env.BACKEND_URL + "/api/token", options);
+				const data = await resp.json();
+
+				if (resp.status === 401) {
+					setStore({ message: data.msg });
+					return false;
+				}
+
+				if (remember === "checked") {
+					sessionStorage.setItem("token", data.token);
+				}
+				setStore({
+					loggedIn: true,
+					token: data.token,
+					message: ""
+				});
+				return true;
 			},
-			changeColor: (index, color) => {
-				//get the store
+			getProfileData: async () => {
 				const store = getStore();
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
+				const options = {
+					method: "GET",
+					headers: {
+						Authorization: "Bearer " + store.token
+					}
+				};
 
-				//reset the global store
-				setStore({ demo: demo });
+				fetch(process.env.BACKEND_URL + "/api/user", options)
+					.then(resp => resp.json())
+					.then(data => {
+						setStore({ userData: data });
+					})
+					.catch(error => console.log(error));
 			}
 		}
 	};

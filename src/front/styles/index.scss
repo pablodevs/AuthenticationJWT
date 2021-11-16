@@ -1,3 +1,35 @@
 /* 
     General Styles
 */
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+body, #app {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    min-height: 100vh;
+}
+#app {
+    display: flex;
+    flex-direction: column;
+}
+.view {
+    margin-block: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+footer {
+    background: rgba(0, 183, 255, 0.205);
+    padding-block: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & > * {
+        margin: 0
+    }
+}
+.dflex-column {
+    display: flex;
+    flex-direction: column;
+}
