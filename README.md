@@ -2,11 +2,11 @@
 
 ## Implemented endpoints:
 --> routes.py
-  - /api/token, methods: 'POST': To create a token or log in on https://frontURL/login
-  - /api/user, methods: 'GET': To get current user information and display it on https://frontURL/profile
+  - /api/token, methods: 'POST': To create a token or log in on ...frontURL/login
+  - /api/user, methods: 'GET': To get current user information and display it on ...frontURL/profile
 
 --> app.py
-  - /user, methods: 'GET' & 'POST': To get all users or create (POST) a new user on https://frontURL/register
+  - /user, methods: 'GET' & 'POST': To get all users or create (POST) a new user on ...frontURL/register
   - /user/<int:user_id>, methods: 'PUT', 'GET', 'DELETE': to modify, get or delete a single user by its id
 
 ### Back-End Manual Installation:
