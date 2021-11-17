@@ -3,7 +3,7 @@
 ## Implemented endpoints:
 --> routes.py
   - /api/token, methods: 'POST': To create a token or log in on ...frontURL/login
-  - /api/user, methods: 'GET': To get current user information and display it on ...frontURL/profile
+  - /api/user, methods: 'GET': Private view to get current user information and display it on ...frontURL/profile
 
 --> app.py
   - /user, methods: 'GET' & 'POST': To get all users or create (POST) a new user on ...frontURL/register
