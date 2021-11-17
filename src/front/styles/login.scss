@@ -54,12 +54,6 @@ $border-radius: 0.25rem;
 .login-message {
     text-align: center;
     padding-top: 0.7rem;
-    
-    & a{
-        text-decoration: none;
-        color: rgb(0, 183, 255);
-        &:hover {color: rgb(3, 158, 219);}
-    }
 }
 
 .login-error {

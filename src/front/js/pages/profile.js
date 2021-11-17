@@ -17,7 +17,19 @@ export const Profile = () => {
 
 	return (
 		<div className="view">
-			<div className="profile-container scale">Welcome {store.userData.user_name}</div>
+			<div className="profile-container scale">
+				<ul>
+					<li>Welcome {store.userData.user_name}</li>
+					<li>
+						email:&nbsp;&nbsp;&nbsp;&nbsp;
+						<span>{store.userData.email}</span>
+					</li>
+					<li>
+						id:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<span>{store.userData.id}</span>
+					</li>
+				</ul>
+			</div>
 		</div>
 	);
 };

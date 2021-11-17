@@ -36,3 +36,8 @@ footer {
     display: flex;
     flex-direction: column;
 }
+a{
+    text-decoration: none;
+    color: rgb(0, 183, 255);
+    &:hover {color: rgb(3, 158, 219);}
+}

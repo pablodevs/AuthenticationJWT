@@ -36,7 +36,9 @@ const Layout = () => {
 						<Profile />
 					</Route>
 					<Route>
-						<h1>Not found!</h1>
+						<div className="view">
+							<h1>404: URL not found!</h1>
+						</div>
 					</Route>
 				</Switch>
 				<Footer />
