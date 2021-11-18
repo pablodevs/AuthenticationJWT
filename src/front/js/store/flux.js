@@ -2,7 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			loggedIn: false,
-			token: "",
+			token: null,
 			message: null,
 			userData: {}
 		},
@@ -17,7 +17,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				sessionStorage.removeItem("token");
 				setStore({
 					loggedIn: false,
-					token: "",
+					token: null,
 					userData: {}
 				});
 			},
@@ -70,13 +70,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				actions.login(email, password, remember);
 				return data;
 			},
-			getProfileData: async () => {
-				const store = getStore();
-
+			getProfileData: async token => {
 				const options = {
 					method: "GET",
 					headers: {
-						Authorization: "Bearer " + store.token
+						Authorization: "Bearer " + token
 					}
 				};
 

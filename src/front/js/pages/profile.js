@@ -9,7 +9,8 @@ export const Profile = () => {
 
 	useEffect(
 		() => {
-			if (store.token && store.token !== "" && store.token !== undefined) actions.getProfileData();
+			let sessionToken = sessionStorage.getItem("token") || store.token;
+			if (sessionToken) actions.getProfileData(sessionToken);
 			else history.push("/");
 		},
 		[store.token]
@@ -17,19 +18,21 @@ export const Profile = () => {
 
 	return (
 		<div className="view">
-			<div className="profile-container scale">
-				<ul>
-					<li>Welcome {store.userData.user_name}</li>
-					<li>
-						email:&nbsp;&nbsp;&nbsp;&nbsp;
-						<span>{store.userData.email}</span>
-					</li>
-					<li>
-						id:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<span>{store.userData.id}</span>
-					</li>
-				</ul>
-			</div>
+			{store.userData.email ? (
+				<div className="profile-container scale">
+					<ul>
+						<li>Welcome {store.userData.user_name}</li>
+						<li>
+							email:&nbsp;&nbsp;&nbsp;&nbsp;
+							<span>{store.userData.email}</span>
+						</li>
+						<li>
+							id:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<span>{store.userData.id}</span>
+						</li>
+					</ul>
+				</div>
+			) : null}
 		</div>
 	);
 };
